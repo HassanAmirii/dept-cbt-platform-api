@@ -25,5 +25,10 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
-module.exports = mongoose.model("question", questionSchema);
+questionSchema.index({ courseCode: 1, topic: 1 });
+module.exports = mongoose.model("Question", questionSchema);
