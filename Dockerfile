@@ -1,5 +1,5 @@
 #start from a base node image
-FROM node:18-alpine
+FROM node:20-alpine
 
 #set up the working dir
 WORKDIR /usr/src/app
