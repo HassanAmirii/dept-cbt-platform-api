@@ -1,12 +1,11 @@
-version: "3.8" #Docker-compose version
-
 services:
   #1 mongoDB service(database)
   mongo:
     image: mongo:latest
     container_name: cbt-mongo
     restart: always
-    ports: -27017:27017 #tunnel the listening port to the container's
+    ports:
+      - 27017:27017 #tunnel the listening port to the container's
     volumes:
       - mongo-data:/data/db #persist data even after docker is down
   #2 API service: express app
