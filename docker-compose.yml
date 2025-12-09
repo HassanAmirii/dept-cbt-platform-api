@@ -6,9 +6,9 @@ services:
     image: mongo:latest
     container_name: cbt-mongo
     restart: always
-    ports: -27017:27017
+    ports: -27017:27017 #tunnel the listening port to the container's
     volumes:
-      - mongo-data:/data/db
+      - mongo-data:/data/db #persist data even after docker is down
   #2 API service: express app
   api:
     build: .
@@ -23,7 +23,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - PORT=3000
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app # bind local code to containers dir instead of rebuilding
       - /usr/src/app/node_modules # Prevents local node_modules from conflicting
 
 volumes:
