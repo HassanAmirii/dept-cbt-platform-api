@@ -1,0 +1,30 @@
+version: "3.8" #Docker-compose version
+
+services:
+  #1 mongoDB service(database)
+  mongo:
+    image: mongo:latest
+    container_name: cbt-mongo
+    restart: always
+    ports: -27017:27017
+    volumes:
+      - mongo-data:/data/db
+  #2 API service: express app
+  api:
+    build: .
+    container_name: cbt-api
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/cbt_db
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules # Prevents local node_modules from conflicting
+
+volumes:
+  mongo-data:
