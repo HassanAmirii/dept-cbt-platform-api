@@ -11,6 +11,10 @@ mongoose
   .then(() => {
     console.log("succesfully connected to DB");
 
+    app.get("/", (req, res) => {
+      res.send("Hello World from Express!");
+    });
+
     app.listen(PORT, () => {
       console.log(`app is listening on port ${PORT}`);
     });
