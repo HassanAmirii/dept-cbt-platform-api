@@ -1,0 +1,10 @@
+#1 pseudo code for exam question generation in (./routes/examRoutes)
+
+- import the questions json file
+- define a req variable get a specific course title and questions counts
+- get the the desired course title questions based on the specified req--through filtering 
+- pick a length of needed questions from the total questions
+- transform the question to contain only what is needed from the whole question schema/ to hide crucial stuffs like answerand explanation 
+- if the new trnasformed question is zero, return error 404, if not return json of questions
+
+
