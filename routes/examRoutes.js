@@ -4,12 +4,13 @@ const router = express.Router();
 
 router.get("/generate", (req, res) => {
   const targetCourse = "GST 111";
+  const targetLevel = 100;
   const desiredCount = 4;
 
   //get the the desired course title questions based on the specified req--through filtering
 
   const filteredQuestions = mockQuestions.filter(
-    (q) => q.courseCode === targetCourse
+    (q) => q.courseCode === targetCourse && q.level === targetLevel,
   );
 
   const selectedQuestions = filteredQuestions.slice(0, desiredCount);
@@ -17,6 +18,7 @@ router.get("/generate", (req, res) => {
   const examQuestions = selectedQuestions.map((q) => ({
     id: q._id,
     courseCode: q.courseCode,
+    level: q.level,
     topic: q.topic,
     text: q.text,
     options: q.options,
