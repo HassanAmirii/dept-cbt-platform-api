@@ -5,6 +5,11 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  level: {
+    type: Number,
+    required: true,
+    enum: [100, 200, 300, 400],
+  },
   topic: {
     type: String,
     required: true,
