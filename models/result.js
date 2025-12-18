@@ -12,6 +12,19 @@ const resultSchema = {
     type: Number,
     required: true,
   },
+  level: {
+    type: Number,
+    required: true,
+    enum: [100, 200, 300, 400],
+  },
+  // Added for Review Feature
+  answers: [
+    {
+      questionId: String,
+      userSelection: Number,
+      isCorrect: Boolean,
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
